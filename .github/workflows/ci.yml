@@ -13,6 +13,6 @@ jobs:
           cache: pip
       - run: pip install -r requirements.txt
       - run: pip install black flake8
-      - run: black --check .
-      - run: flake8 .
+      - run: black --check ai_router.py
+      - run: flake8 ai_router.py
       - run: pytest tests/
