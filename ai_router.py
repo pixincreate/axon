@@ -191,10 +191,10 @@ def main():
         "-i", "--interactive", action="store_true", help="Interactive mode"
     )
     parser.add_argument(
-        "-p",
-        "--playwright",
+        "-b",
+        "--browser",
         action="store_true",
-        help="Use Playwright for cloud queries",
+        help="Open in browser instead of using Playwright",
     )
 
     args = parser.parse_args()
@@ -244,12 +244,12 @@ def main():
     elif tool_name == "coding":
         run_coding(tool_cmd, query)
     else:
-        if args.playwright:
+        if args.browser:
+            run_cloud(tool_cmd)
+        else:
             response = run_cloud_playwright(tool_cmd, query)
             if response:
                 print(response)
-        else:
-            run_cloud(tool_cmd)
 
     return 0
 
