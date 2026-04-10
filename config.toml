@@ -1,0 +1,114 @@
+[tools.local]
+model = "gemma4:e4b"
+command = "ollama run {model}"
+
+[tools.coding]
+command = "opencode"
+
+[tools.cloud]
+url = "https://chat.openai.com"
+
+[routing]
+fallback = "local"
+
+[[detection.pii.patterns]]
+regex = "\\b\\d{10}\\b"
+label = "phone"
+
+[[detection.pii.patterns]]
+regex = "\\b\\d{3}[-.]?\\d{3}[-.]?\\d{4}\\b"
+label = "phone"
+
+[[detection.pii.patterns]]
+regex = "\\b[\\w.-]+@[\\w.-]+\\.\\w{2,}\\b"
+label = "email"
+
+[[detection.pii.patterns]]
+regex = "\\b(?:api_key|apikey|secret|password)\\s*[:=]"
+label = "secret"
+
+[[detection.pii.patterns]]
+regex = "\\b(?:sk-|pk_)[A-Za-z0-9]{20,}\\b"
+label = "apikey"
+
+[[detection.pii.patterns]]
+regex = "\\b\\d{12}\\b"
+label = "id"
+
+[[detection.pii.patterns]]
+regex = "\\b[A-Z]{1,2}\\d{6,9}\\b"
+label = "id"
+
+[[detection.pii.patterns]]
+regex = "\\b\\d{16}\\b"
+label = "creditcard"
+
+[[detection.pii.patterns]]
+regex = "\\b(?:INR|USD|EUR|GBP)\\s*\\d+"
+label = "money"
+
+[[detection.pii.patterns]]
+regex = "\\b(?:Mr\\.|Ms\\.|Mrs\\.|Dr\\.)\\s+[A-Z][a-z]+"
+label = "name"
+
+[[detection.pii.patterns]]
+regex = "\\b(?:diagnosis|prescription|patient|medical|health)\\b"
+label = "medical"
+
+[detection.code]
+keywords = [
+    "def ",
+    "class ",
+    "import ",
+    "from ",
+    "return ",
+    "self.",
+    "__init__",
+    "const ",
+    "let ",
+    "var ",
+    "function ",
+    "=>",
+    "export ",
+    "import {",
+    "console.log",
+    "require(",
+    "module.exports",
+    "public ",
+    "private ",
+    "protected ",
+    "void ",
+    "static ",
+    "interface ",
+    "fn ",
+    "pub ",
+    "impl ",
+    "mod ",
+    "use ",
+    "let mut",
+    "func ",
+    "package ",
+    "type ",
+    "struct ",
+    "SELECT ",
+    "INSERT ",
+    "UPDATE ",
+    "DELETE ",
+    "CREATE TABLE",
+    "#!/bin/bash",
+    "#!/bin/sh",
+    "echo ",
+    "export ",
+    "{}",
+    "};",
+    "();",
+    "=>",
+    "->",
+    "::",
+    "##",
+    "```",
+    "async ",
+    "await ",
+    "Promise",
+    "Future"
+]
