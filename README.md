@@ -45,3 +45,11 @@ pip install -r requirements.txt
 pytest tests/
 flake8 ai_router.py
 ```
+
+## License
+
+Copyright 2026 pixincreate.
+Licensed under the [Apache License, Version 2.0](LICENSE).
+Individual files and third-party material can specify different terms.
+Material published under CC0 1.0 Universal remains available under CC0.
+This includes unchanged material in later versions.
